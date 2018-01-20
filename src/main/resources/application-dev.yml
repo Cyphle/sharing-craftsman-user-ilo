@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    testWhileIdle: true
+    validationQuery: SELECT 1
+  cache:
+    type: NONE
+# JPA
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+      hibernate: ERROR
+  file: /logs/app.log
+
+bonecp:
+  driverClass: com.mysql.jdbc.Driver
+  url: jdbc:mysql://192.168.1.18:3306/sharingcraftsmanuser?useUnicode=yes&characterEncoding=UTF-8
+  username: root
+  password: root
+  idleMaxAgeInMinutes: 240
+  idleConnectionTestPeriodInMinutes: 60
+  maxConnectionsPerPartition: 10
+  minConnectionsPerPartition: 1
+  partitionCount: 2
+  acquireIncrement: 5
+  statementsCacheSize: 100
+
+data:
+  user: data/user-data.csv
+  authotization: data/authorization-data.csv
+  user-authorization: data/user-authotization-data.csv
+  client: data/client-data.csv
